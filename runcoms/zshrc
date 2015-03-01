@@ -7,11 +7,11 @@
 
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
-  source "${ZDOTDIR:-$HOME}/.zprezto/modules/git/init.zsh"
-  source "${ZDOTDIR:-$HOME}/.zprezto/modules/python/init.zsh"
-  source "${ZDOTDIR:-$HOME}/.zprezto/modules/node/init.zsh"
-  source "${ZDOTDIR:-$HOME}/.zprezto/modules/fasd/init.zsh"
+source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+#  source "${ZDOTDIR:-$HOME}/.zprezto/modules/git/init.zsh"
+#  source "${ZDOTDIR:-$HOME}/.zprezto/modules/python/init.zsh"
+#  source "${ZDOTDIR:-$HOME}/.zprezto/modules/node/init.zsh"
+#  source "${ZDOTDIR:-$HOME}/.zprezto/modules/fasd/init.zsh"
 fi
 
 # Customize to your needs...
@@ -19,12 +19,30 @@ fi
 export WORKON_HOME="$HOME/.envs"
 source "/usr/local/bin/virtualenvwrapper.sh"
 alias ez='. "/home/najam/z.sh"'
+# function ef {
+#	. /home/najam/fasd;
+#	eval "$(fasd --init auto)";
+#	eval "$(fasd --init posix-alias zsh-hook)"
+#	fasd_cache="$HOME/.fasd-init-bash"
+#	if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then
+#		fasd --init posix-alias bash-hook bash-ccomp bash-ccomp-install >| "$fasd_cache"
+#	fi
+#	source "$fasd_cache"
+#	unset fasd_cache
+# }
+
+
 alias enableshell='. /home/najam/webapps/dubizzle/shell.sh'
 
 export TERM=xterm-256color
 export PYTHONSTARTUP=~/.pythonrc
 export LANG="en_US.utf8"
 export SHELL="/bin/zsh"
+
+# Enable comments like these
+setopt interactivecomments; #foo
+setopt histignoredups
+setopt histignorespace
 
 #setopt EXTENDED_GLOB
 #for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
@@ -36,3 +54,35 @@ export SHELL="/bin/zsh"
 #    export TERM=xterm-256color
 # fi
 export ES_HOME="/usr/local/src/elasticsearch-0.20.2/"
+
+[ -s "/home/najam/.scm_breeze/scm_breeze.sh" ] && source "/home/najam/.scm_breeze/scm_breeze.sh"
+
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
+export NVM_DIR="/home/najam/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+# export PATH="$HOME/.linuxbrew/bin:$PATH"
+# export LD_LIBRARY_PATH="$HOME/.linuxbrew/lib:$LD_LIBRARY_PATH"
+#
+#source /usr/local/share/chruby/chruby.sh
+#source /usr/local/share/chruby/auto.sh
+#
+
+export PATH="$HOME/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+if [[ -f "/home/najam/.nenv/nenv.sh" ]]; then
+  source "/home/najam/.nenv/nenv.sh"
+
+  # Uncomment the following line if you want virtual environments
+  # activated/deactivted as you cd into/out of them.
+  # alias cd="nenv_cd"
+
+  # Uncomment the following line if you want to try to check for a
+  # virtual environment in the current directory (and activate it)
+  # whenever a new shell session is created.
+  # nenv activate
+fi

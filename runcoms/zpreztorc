@@ -87,6 +87,11 @@ zstyle ':prezto:module:git:status:ignore' submodules 'untracked'
 # Auto set to 'off' on dumb terminals.
 zstyle ':prezto:module:prompt' theme 'sorin'
 
+#autoload -Uz promptinit
+#promptinit
+#prompt sorin
+
+
 #
 # Screen
 #
